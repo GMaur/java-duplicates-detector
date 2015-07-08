@@ -13,6 +13,10 @@ public class RepeatedFinderShould {
 		RepeatedFinder sut = new RepeatedFinder(RepeatedConstants.class);
 		MultiMap<Object, String> duplicates = sut.findDuplicates();
 
+		for(Object current : duplicates.all()){
+			System.out.println("found value = '" + current+"', with variables = " + duplicates.get(current));
+		}
+
 		assertThat(duplicates.size(), is(2));
 		assertThat(duplicates.get("A"), hasItems("A", "A_1", "A_2"));
 		assertThat(duplicates.get(3), hasItems("_3", "THREE"));
