@@ -23,7 +23,15 @@ public class RepeatedFinderShould {
 	}
 
 	@Test
-	public void not_find_duplicates() throws IllegalAccessException {
+	public void not_find_duplicates_in_attributes() throws IllegalAccessException {
+		RepeatedFinder sut = new RepeatedFinder(AttributesButNoConstants.class);
+		MultiMap<Object, String> duplicates = sut.findDuplicates();
+
+		assertThat(duplicates.size(), is(0));
+	}
+
+	@Test
+	public void not_find_duplicates_when_there_are_no_fields() throws IllegalAccessException {
 		RepeatedFinder sut = new RepeatedFinder(NoConstants.class);
 		MultiMap<Object, String> duplicates = sut.findDuplicates();
 

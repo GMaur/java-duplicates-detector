@@ -1,5 +1,6 @@
 package com.gmaur.tool.java.duplicatedetector;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 
@@ -22,8 +23,10 @@ public class RepeatedFinder {
 		Field[] fields = clazz.getDeclaredFields();
 		Object object = new Object();
 		for (Field field : fields) {
-			Object value = field.get(object);
-			valueToNames.add(value, field.getName());
+			if(Modifier.isStatic(field.getModifiers())) {
+				Object value = field.get(object);
+				valueToNames.add(value, field.getName());
+			}
 		}
 		return valueToNames;
 	}
