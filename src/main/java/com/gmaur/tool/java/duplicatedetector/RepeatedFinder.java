@@ -3,11 +3,7 @@ package com.gmaur.tool.java.duplicatedetector;
 import java.util.List;
 
 
-import java.util.List;
-
-
 import java.lang.reflect.Field;
-import java.util.*;
 
 public class RepeatedFinder {
 
@@ -50,33 +46,4 @@ public class RepeatedFinder {
 		}
 	}
 
-	public static class MultiMap<K, V> {
-
-		private final Map<K, List<V>> values = new HashMap<>();
-
-		public Iterable<K> all() {
-			return values.keySet();
-		}
-
-		public List<V> getValuesFor(K current) {
-			return values.get(current);
-		}
-
-		public void put(K value, List<V> variables) {
-			values.put(value, variables);
-		}
-
-		public List<V> get(K value) {
-			return Collections.unmodifiableList(values.get(value));
-		}
-
-		public int size() {
-			return values.entrySet().size();
-		}
-
-		public void add(K value, V variable) {
-			values.putIfAbsent(value, new ArrayList<>());
-			getValuesFor(value).add(variable);
-		}
-	}
 }

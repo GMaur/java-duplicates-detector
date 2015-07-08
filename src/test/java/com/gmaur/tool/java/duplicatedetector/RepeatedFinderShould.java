@@ -11,7 +11,7 @@ public class RepeatedFinderShould {
 	@Test
 	public void find_duplicates_in_string_and_integer_constants() throws IllegalAccessException {
 		RepeatedFinder sut = new RepeatedFinder(RepeatedConstants.class);
-		RepeatedFinder.MultiMap<Object, String> duplicates = sut.findDuplicates();
+		MultiMap<Object, String> duplicates = sut.findDuplicates();
 
 		assertThat(duplicates.size(), is(2));
 		assertThat(duplicates.get("A"), hasItems("A", "A_1", "A_2"));
@@ -21,7 +21,7 @@ public class RepeatedFinderShould {
 	@Test
 	public void not_find_duplicates() throws IllegalAccessException {
 		RepeatedFinder sut = new RepeatedFinder(NoConstants.class);
-		RepeatedFinder.MultiMap<Object, String> duplicates = sut.findDuplicates();
+		MultiMap<Object, String> duplicates = sut.findDuplicates();
 
 		assertThat(duplicates.size(), is(0));
 	}
