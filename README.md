@@ -20,14 +20,16 @@ for(Object current : duplicates.all()){
 
 See [RepeatedFinderShould](https://github.com/GMaur/java-duplicates-detector/blob/master/src/test/java/com/gmaur/tool/java/duplicatedetector/RepeatedFinderShould.java) for some tests
 
-### Known limitations
+### Behavior
 
-This class only works in ``static`` classes, otherwise you get an error (below). To solve it, make the class temporarily static. Stack:
+This class only finds repeated values in ``static`` variables.
 
-```
-java.lang.IllegalArgumentException: Can not set final com.gmaur.tool.java.duplicatedetector.RepeatedFinderShould field com.gmaur.tool.java.duplicatedetector.RepeatedFinderShould$RepeatedConstants.this$0 to java.lang.Object
-	at sun.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:167)
-	at sun.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:171)
-	at sun.reflect.UnsafeFieldAccessorImpl.ensureObj(UnsafeFieldAccessorImpl.java:58)
-	at sun.reflect.UnsafeQualifiedObjectFieldAccessorImpl.get(UnsafeQualifiedObjectFieldAccessorImpl.java:38)
+Example:
+
+```java
+public static Integer _3 = 3;
+public static Integer THREE = 3; // repeated with _3
+
+public Integer _2 = 2;
+public Integer TWO = 2; // no repetition
 ```
