@@ -20,8 +20,9 @@ public class RepeatedFinder {
 	private ValueToNameRepository generateMapFromValueToVariables(Class<?> clazz) throws IllegalAccessException {
 		ValueToNameRepository valueToNames = new ValueToNameRepository();
 		Field[] fields = clazz.getDeclaredFields();
+		Object object = new Object();
 		for (Field field : fields) {
-			Object value = field.get(new Object());
+			Object value = field.get(object);
 			valueToNames.add(value, field.getName());
 		}
 		return valueToNames;
